@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/sidebar/sidebar";
 import { Header } from "@/components/header/header";
 import { ChatArea } from "@/components/chat/chat-area";
 import { ChatInput } from "@/components/chat/chat-input";
+import { ErrorBoundary } from "@/components/error-boundary";
 import { useChat } from "@/hooks/use-chat";
 import {
   mockUser,
@@ -17,10 +18,13 @@ import {
 export default function AIAssistantDashboard() {
   const { messages, isLoading, sendMessage } = useChat();
   const [inputValue, setInputValue] = useState("");
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const chatAreaRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (chatAreaRef.current) {
+      chatAreaRef.current.scrollTop = chatAreaRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -34,33 +38,65 @@ export default function AIAssistantDashboard() {
     setInputValue("");
   };
 
+  const handleFullscreen = () => {
+    try {
+      setIsFullscreen(!isFullscreen);
+    } catch (error) {
+      console.error("Error toggling fullscreen:", error);
+    }
+  };
+
+  const handleDarkMode = () => {
+    console.log("Dark mode toggle clicked");
+    // TODO: Implement dark mode functionality
+  };
+
+  const handleLogout = () => {
+    console.log("Logout clicked");
+    // TODO: Implement logout functionality
+  };
+
   return (
-    <div className="min-h-screen bg-[#f8fafc] flex">
-      <Sidebar
-        insights={mockInsights}
-        prompts={mockPrompts}
-        metrics={mockMetrics}
-        systems={mockSystems}
-      />
+    <ErrorBoundary>
+      <div className="h-screen bg-[#f8fafc] flex">
+        {!isFullscreen && (
+          <Sidebar
+            insights={mockInsights}
+            prompts={mockPrompts}
+            metrics={mockMetrics}
+            systems={mockSystems}
+          />
+        )}
 
-      <div className="flex-1 flex flex-col">
-        <Header user={mockUser} />
+        <div className="flex-1 flex flex-col h-screen">
+          <Header
+            user={
+              mockUser || { id: "1", name: "User", role: "User", avatar: "" }
+            }
+            onFullscreen={handleFullscreen}
+            onDarkMode={handleDarkMode}
+            onLogout={handleLogout}
+          />
 
-        <ChatArea
-          messages={messages}
-          userAvatar={mockUser.avatar}
-          userName={mockUser.name}
-        />
+          <div className="flex-1 overflow-hidden flex flex-col">
+            <ChatArea
+              ref={chatAreaRef}
+              messages={messages || []}
+              userAvatar={mockUser?.avatar || ""}
+              userName={mockUser?.name || "User"}
+            />
+          </div>
 
-        <div ref={messagesEndRef} />
-
-        <ChatInput
-          value={inputValue}
-          onChange={setInputValue}
-          onSend={handleSendMessage}
-          isLoading={isLoading}
-        />
+          <div className="sticky bottom-0 bg-white border-t border-[#e2e8f0] shadow-lg">
+            <ChatInput
+              value={inputValue}
+              onChange={setInputValue}
+              onSend={handleSendMessage}
+              isLoading={isLoading}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 }

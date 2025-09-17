@@ -70,25 +70,28 @@ export const mockMetrics: UsageMetric[] = [
     id: "1",
     value: "47.2K",
     label: "Conversations",
-    change: "+ 23%",
+    change: "+23%",
     color: "blue",
   },
   {
     id: "2",
     value: "2,847",
     label: "Reports Generated",
+    additionalInfo: "Average Day: 32",
     color: "green",
   },
   {
     id: "3",
     value: "1,249h",
     label: "Time Saved",
+    additionalInfo: "Up to 10 days",
     color: "gray",
   },
   {
     id: "4",
     value: "1,534",
     label: "Reports Exported",
+    additionalInfo: "Format: PDF (65%)",
     color: "orange",
   },
 ];
@@ -115,7 +118,7 @@ export const mockSystems: ConnectedSystem[] = [
     name: "Analytics Engine",
     description: "Processing...",
     icon: "📊",
-    status: "processing",
+    status: "offline",
     lastSync: "Processing...",
   },
 ];

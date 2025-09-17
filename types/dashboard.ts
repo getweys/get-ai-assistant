@@ -24,6 +24,7 @@ export interface UsageMetric {
   value: string;
   label: string;
   change?: string;
+  additionalInfo?: string;
   color: "blue" | "green" | "gray" | "orange";
 }
 

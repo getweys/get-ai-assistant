@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Brain } from "lucide-react";
 import { CapabilityCard } from "./capability-card";
 
 const capabilities = [
@@ -12,32 +13,41 @@ export function WelcomeMessage() {
   return (
     <div className="mb-6">
       <div className="flex items-start gap-4">
-        <div className="w-10 h-10 bg-[#3b82f6] rounded-full flex items-center justify-center">
-          <span className="text-white font-bold">AI</span>
+        <div className="w-10 h-10 bg-gradient-to-br from-[#3B82F6] to-[#1E40AF] rounded-full flex items-center justify-center shadow-md">
+          <Brain className="h-5 w-5 text-white" />
         </div>
         <div className="flex-1">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 bg-[#3b82f6] rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium text-[#3b82f6]">
-              NeuroAI Initialized
-            </span>
-          </div>
+          <div className="bg-white rounded-2xl rounded-tl-md p-4 shadow-sm border border-[#e5e7eb] max-w-4xl">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-2 h-2 bg-[#3b82f6] rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-[#3b82f6]">
+                NeuroAI Initialized
+              </span>
+            </div>
 
-          <div className="grid grid-cols-2 gap-3 mb-4">
-            {capabilities.map((capability, index) => (
-              <CapabilityCard
-                key={index}
-                icon={capability.icon}
-                title={capability.title}
-                color={capability.color}
-              />
-            ))}
-          </div>
+            <p className="text-[#374151] leading-relaxed mb-4">
+              Welcome to the future of AI assistance! I'm your advanced NeuroAI
+              companion, powered by quantum processing and real-time neural
+              networks. I can analyze vast datasets, generate predictive
+              insights, and create comprehensive visualizations in milliseconds.
+            </p>
 
-          <p className="text-sm text-[#6b7280] mb-2">
-            Try: "Analyze market trends with quantum predictions" or "Generate
-            neural network dashboard for customer behavior"
-          </p>
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              {capabilities.map((capability, index) => (
+                <CapabilityCard
+                  key={index}
+                  icon={capability.icon}
+                  title={capability.title}
+                  color={capability.color}
+                />
+              ))}
+            </div>
+
+            <p className="text-sm text-[#6b7280]">
+              Try: "Analyze market trends with quantum predictions" or "Generate
+              neural network dashboard for customer behavior"
+            </p>
+          </div>
         </div>
       </div>
     </div>

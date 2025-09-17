@@ -32,7 +32,7 @@ export function CapabilityCard({ icon, title, color }: CapabilityCardProps) {
     <Card
       className={`border-[#e5e7eb] ${colors.bg} hover:shadow-md transition-all duration-200 cursor-pointer`}
     >
-      <CardContent className="p-4">
+      <CardContent className="p-4 py-0">
         <div className="flex items-center gap-2">
           <span className={colors.text}>{icon}</span>
           <span className={`text-sm font-medium ${colors.text}`}>{title}</span>
