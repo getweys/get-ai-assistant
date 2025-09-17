@@ -13,6 +13,7 @@ import {
   ChevronDown,
   Moon,
   LogOut,
+  Menu,
 } from "lucide-react";
 import type { User } from "@/types";
 
@@ -21,6 +22,10 @@ interface HeaderProps {
   onFullscreen?: () => void;
   onDarkMode?: () => void;
   onLogout?: () => void;
+  onSidebarToggle?: () => void;
+  onMobileMenuToggle?: () => void;
+  isSidebarCollapsed?: boolean;
+  isMobileMenuOpen?: boolean;
 }
 
 export function Header({
@@ -28,11 +33,25 @@ export function Header({
   onFullscreen,
   onDarkMode,
   onLogout,
+  onSidebarToggle,
+  onMobileMenuToggle,
+  isSidebarCollapsed = false,
+  isMobileMenuOpen = false,
 }: HeaderProps) {
   return (
     <div className="bg-white border-b border-[#e2e8f0] p-6 py-2.5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
+          {/* Mobile Hamburger Menu */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className="h-8 w-8 p-0 text-[#6b7280] hover:bg-gray-100 rounded-lg lg:hidden"
+            onClick={onMobileMenuToggle}
+          >
+            <Menu className="h-4 w-4" />
+          </Button>
+
           <div className="w-12 h-12 bg-gradient-to-br from-[#3B82F6] to-[#1E40AF] rounded-xl flex items-center justify-center shadow-lg">
             <Brain className="h-6 w-6 text-white" />
           </div>

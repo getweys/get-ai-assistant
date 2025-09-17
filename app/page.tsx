@@ -19,6 +19,8 @@ export default function AIAssistantDashboard() {
   const { messages, isLoading, sendMessage } = useChat();
   const [inputValue, setInputValue] = useState("");
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const chatAreaRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -56,6 +58,14 @@ export default function AIAssistantDashboard() {
     // TODO: Implement logout functionality
   };
 
+  const handleSidebarToggle = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <ErrorBoundary>
       <div className="h-screen bg-[#f8fafc] flex">
@@ -65,6 +75,10 @@ export default function AIAssistantDashboard() {
             prompts={mockPrompts}
             metrics={mockMetrics}
             systems={mockSystems}
+            isCollapsed={isSidebarCollapsed}
+            isMobileMenuOpen={isMobileMenuOpen}
+            onToggle={handleSidebarToggle}
+            onMobileToggle={handleMobileMenuToggle}
           />
         )}
 
@@ -76,6 +90,10 @@ export default function AIAssistantDashboard() {
             onFullscreen={handleFullscreen}
             onDarkMode={handleDarkMode}
             onLogout={handleLogout}
+            onSidebarToggle={handleSidebarToggle}
+            onMobileMenuToggle={handleMobileMenuToggle}
+            isSidebarCollapsed={isSidebarCollapsed}
+            isMobileMenuOpen={isMobileMenuOpen}
           />
 
           <div className="flex-1 overflow-hidden flex flex-col">
