@@ -1,19 +1,44 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-}
+  title: "AI Assistant Pro - Advanced Quantum Intelligence Dashboard",
+  description:
+    "Advanced AI assistant dashboard with quantum processing, neural networks, and real-time data analysis capabilities.",
+  keywords: [
+    "AI",
+    "artificial intelligence",
+    "dashboard",
+    "analytics",
+    "quantum computing",
+    "neural networks",
+  ],
+  authors: [{ name: "AI Assistant Pro Team" }],
+  creator: "AI Assistant Pro",
+  publisher: "AI Assistant Pro",
+  robots: "index, follow",
+  openGraph: {
+    title: "AI Assistant Pro - Advanced Quantum Intelligence Dashboard",
+    description:
+      "Advanced AI assistant dashboard with quantum processing, neural networks, and real-time data analysis capabilities.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Assistant Pro - Advanced Quantum Intelligence Dashboard",
+    description:
+      "Advanced AI assistant dashboard with quantum processing, neural networks, and real-time data analysis capabilities.",
+  },
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -22,5 +47,5 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
