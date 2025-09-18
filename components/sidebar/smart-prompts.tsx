@@ -10,20 +10,22 @@ interface SmartPromptsProps {
 
 const promptColors = {
   green: {
-    bg: "bg-[#dcfce7]",
-    text: "text-[#16a34a]",
-    bar: "bg-[#16a34a]",
+    bg: "bg-green-100 dark:bg-green-900/40",
+    text: "text-green-600 dark:text-green-400",
+    bar: "bg-green-600 dark:bg-green-400",
   },
   blue: {
-    bg: "bg-[#dbeafe]",
-    text: "text-[#3b82f6]",
-    bar: "bg-[#3b82f6]",
+    bg: "bg-blue-100 dark:bg-blue-900/40",
+    text: "text-blue-600 dark:text-blue-400",
+    bar: "bg-blue-600 dark:bg-blue-400",
   },
 };
 
 const badgeVariants = {
-  "high-impact": "bg-[#f97316] text-white border-0 hover:bg-[#f97316]",
-  popular: "bg-[#eab308] text-[#111827] border-0 hover:bg-[#eab308]",
+  "high-impact":
+    "bg-orange-500 text-white border-0 hover:bg-orange-500 dark:bg-orange-600 dark:hover:bg-orange-600",
+  popular:
+    "bg-yellow-500 text-gray-900 border-0 hover:bg-yellow-500 dark:bg-yellow-600 dark:text-gray-900 dark:hover:bg-yellow-600",
 };
 
 // Additional prompt sets for pagination
@@ -98,12 +100,14 @@ export function SmartPrompts({ prompts }: SmartPromptsProps) {
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-medium text-[#374151]">Smart Prompts</h3>
+        <h3 className="text-sm font-medium text-sidebar-foreground">
+          Smart Prompts
+        </h3>
         <div className="flex gap-1">
           <Button
             variant="ghost"
             size="sm"
-            className="h-6 w-6 p-0 text-[#6b7280] hover:bg-gray-100 rounded-full"
+            className="h-6 w-6 p-0 text-sidebar-foreground hover:bg-sidebar-accent rounded-full"
             onClick={handlePrevious}
           >
             <span className="text-xs">‹</span>
@@ -111,7 +115,7 @@ export function SmartPrompts({ prompts }: SmartPromptsProps) {
           <Button
             variant="ghost"
             size="sm"
-            className="h-6 w-6 p-0 text-[#6b7280] hover:bg-gray-100 rounded-full"
+            className="h-6 w-6 p-0 text-sidebar-foreground hover:bg-sidebar-accent rounded-full"
             onClick={handleNext}
           >
             <span className="text-xs">›</span>
@@ -124,7 +128,7 @@ export function SmartPrompts({ prompts }: SmartPromptsProps) {
         return (
           <div key={prompt.id}>
             <Card
-              className={`border-[#e5e7eb] bg-white py-0 gap-0 rounded-t-sm ${
+              className={`border-sidebar-border bg-sidebar py-0 gap-0 rounded-t-sm ${
                 index === currentPrompts.length - 1 ? "" : "mb-3"
               }`}
             >
@@ -139,10 +143,10 @@ export function SmartPrompts({ prompts }: SmartPromptsProps) {
                     </span>
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-sm text-[#111827] mb-1">
+                    <div className="font-medium text-sm text-sidebar-foreground mb-1">
                       {prompt.title}
                     </div>
-                    <div className="text-xs text-[#6b7280] mb-3">
+                    <div className="text-xs text-sidebar-foreground/70 mb-3">
                       {prompt.description}
                     </div>
                     <div className="flex items-center justify-between">

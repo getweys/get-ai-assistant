@@ -9,18 +9,18 @@ interface ConnectedSystemsProps {
 
 const statusColors = {
   online: {
-    dot: "bg-[#22c55e]",
-    text: "text-[#22c55e]",
+    dot: "bg-green-500",
+    text: "text-green-600 dark:text-green-400",
     label: "Active",
   },
   processing: {
-    dot: "bg-[#eab308]",
-    text: "text-[#eab308]",
+    dot: "bg-yellow-500",
+    text: "text-yellow-600 dark:text-yellow-400",
     label: "Processing",
   },
   offline: {
-    dot: "bg-[#ef4444]",
-    text: "text-[#ef4444]",
+    dot: "bg-red-500",
+    text: "text-red-600 dark:text-red-400",
     label: "Offline",
   },
 };
@@ -34,7 +34,7 @@ const systemIcons = {
 export function ConnectedSystems({ systems }: ConnectedSystemsProps) {
   return (
     <div>
-      <h3 className="text-sm font-medium text-[#374151] mb-4">
+      <h3 className="text-sm font-medium text-sidebar-foreground mb-4">
         Connected Systems
       </h3>
       <div className="space-y-3">
@@ -46,20 +46,20 @@ export function ConnectedSystems({ systems }: ConnectedSystemsProps) {
           return (
             <Card
               key={system.id}
-              className="bg-[#F9FAFB] border-[#e5e7eb] shadow-sm py-0"
+              className="bg-sidebar-accent border-sidebar-border shadow-sm py-0"
             >
               <CardContent className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-[#f3f4f6] rounded-lg flex items-center justify-center">
+                  <div className="w-8 h-8 bg-sidebar-accent-foreground/10 rounded-lg flex items-center justify-center">
                     {IconComponent && (
-                      <IconComponent className="h-4 w-4 text-[#374151]" />
+                      <IconComponent className="h-4 w-4 text-sidebar-foreground" />
                     )}
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm font-medium text-[#111827]">
+                    <div className="text-sm font-medium text-sidebar-foreground">
                       {system.name}
                     </div>
-                    <div className="text-xs text-[#6b7280]">
+                    <div className="text-xs text-sidebar-foreground/70">
                       {system.lastSync}
                     </div>
                   </div>
@@ -75,15 +75,15 @@ export function ConnectedSystems({ systems }: ConnectedSystemsProps) {
           );
         })}
       </div>
-      <Card className="bg-white border-[#e5e7eb] border-dashed shadow-sm mt-4 py-0">
+      <Card className="bg-sidebar border-sidebar-border border-dashed shadow-sm mt-4 py-0">
         <CardContent className="p-4">
           <Button
             variant="ghost"
-            className="w-full h-auto p-0 text-[#374151] hover:bg-transparent"
+            className="w-full h-auto p-0 text-sidebar-foreground hover:bg-sidebar-accent"
           >
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center">
-                <Plus className="h-4 w-4 text-[#374151]" />
+                <Plus className="h-4 w-4 text-sidebar-foreground" />
               </div>
               <span className="text-sm font-medium">Connect New System</span>
             </div>

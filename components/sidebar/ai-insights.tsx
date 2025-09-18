@@ -7,41 +7,43 @@ interface AIInsightsProps {
 
 const insightColors = {
   blue: {
-    bg: "bg-[#eff6ff]",
-    text: "text-[#1e40af]",
-    value: "text-[#3b82f6]",
-    valueBg: "bg-[#dbeafe]",
-    progress: "bg-[#dbeafe]",
-    bar: "bg-[#3b82f6]",
+    bg: "bg-blue-50 dark:bg-blue-950/20",
+    text: "text-blue-900 dark:text-blue-100",
+    value: "text-blue-700 dark:text-blue-300",
+    valueBg: "bg-blue-100 dark:bg-blue-900/40",
+    progress: "bg-blue-100 dark:bg-blue-900/40",
+    bar: "bg-blue-600 dark:bg-blue-400",
   },
   green: {
-    bg: "bg-[#f0fdf4]",
-    text: "text-[#166534]",
-    value: "text-[#16a34a]",
-    valueBg: "bg-[#dcfce7]",
-    progress: "bg-[#dcfce7]",
-    bar: "bg-[#16a34a]",
+    bg: "bg-green-50 dark:bg-green-950/20",
+    text: "text-green-900 dark:text-green-100",
+    value: "text-green-700 dark:text-green-300",
+    valueBg: "bg-green-100 dark:bg-green-900/40",
+    progress: "bg-green-100 dark:bg-green-900/40",
+    bar: "bg-green-600 dark:bg-green-400",
   },
   gray: {
-    bg: "bg-[#f8fafc]",
-    text: "text-[#374151]",
-    value: "text-[#374151]",
-    valueBg: "bg-[#e2e8f0]",
-    progress: "bg-[#e2e8f0]",
-    bar: "bg-[#374151]",
+    bg: "bg-gray-50 dark:bg-gray-950/20",
+    text: "text-gray-900 dark:text-gray-100",
+    value: "text-gray-700 dark:text-gray-300",
+    valueBg: "bg-gray-100 dark:bg-gray-900/40",
+    progress: "bg-gray-100 dark:bg-gray-900/40",
+    bar: "bg-gray-600 dark:bg-gray-400",
   },
 };
 
 export function AIInsights({ insights }: AIInsightsProps) {
   return (
     <div className="mb-8">
-      <h3 className="text-sm font-medium text-[#374151] mb-4">AI Insights</h3>
+      <h3 className="text-sm font-medium text-sidebar-foreground mb-4">
+        AI Insights
+      </h3>
       {insights.map((insight) => {
         const colors = insightColors[insight.color];
         return (
           <Card
             key={insight.id}
-            className={`mb-4 border-[#e5e7eb] ${colors.bg}`}
+            className={`mb-4 border-sidebar-border ${colors.bg}`}
           >
             <CardContent className="p-4 py-0">
               <div className="flex items-center justify-between mb-2">
