@@ -1,5 +1,5 @@
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/atoms/input";
+import { Button } from "@/components/atoms/button";
 import { Mic, Smile, Shield, Send } from "lucide-react";
 import EmojiPicker from "emoji-picker-react";
 import { useState, useRef, useEffect } from "react";

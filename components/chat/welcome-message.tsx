@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/atoms/card";
 import { Brain } from "lucide-react";
 import { CapabilityCard } from "./capability-card";
 

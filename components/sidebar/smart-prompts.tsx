@@ -1,6 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/atoms/card";
+import { Button } from "@/components/atoms/button";
+import { Badge } from "@/components/atoms/badge";
 import { useState } from "react";
 import type { SmartPrompt } from "@/types";
 

@@ -5,7 +5,7 @@ import { Sidebar } from "@/components/sidebar/sidebar";
 import { Header } from "@/components/header/header";
 import { ChatArea } from "@/components/chat/chat-area";
 import { ChatInput } from "@/components/chat/chat-input";
-import { ErrorBoundary } from "@/components/error-boundary";
+import { ErrorBoundary } from "@/errors/error-boundary";
 import { useChat } from "@/hooks/use-chat";
 import {
   mockUser,

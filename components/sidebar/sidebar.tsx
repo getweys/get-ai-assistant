@@ -3,7 +3,7 @@ import { SmartPrompts } from "./smart-prompts";
 import { UsageMetrics } from "./usage-metrics";
 import { ConnectedSystems } from "./connected-systems";
 import { Brain, ChevronLeft, ChevronRight, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/atoms/button";
 import type {
   AIInsight,
   SmartPrompt,

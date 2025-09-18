@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/atoms/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/atoms/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/atoms/dropdown-menu";
 import {
   Search,
   Maximize2,

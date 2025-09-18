@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/atoms/button";
+import { Card, CardContent } from "@/components/atoms/card";
 import { Database, Brain, BarChart3, Plus } from "lucide-react";
 import type { ConnectedSystem } from "@/types";
 

@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/atoms/avatar";
 import { Brain } from "lucide-react";
 import type { Message } from "@/types";
 
