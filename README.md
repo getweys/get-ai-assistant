@@ -1,6 +1,6 @@
-# AI Assistant Pro Dashboard
+# GET AI Assistant Dashboard
 
-A modern, well-structured AI assistant dashboard built with Next.js 14, React, TypeScript, and Tailwind CSS.
+A modern, well-structured GET AI Assistant dashboard built with Next.js 14, React, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 

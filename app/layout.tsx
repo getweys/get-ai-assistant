@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI Assistant Pro - Advanced Quantum Intelligence Dashboard",
+  title: "GET AI Assistant - Advanced Quantum Intelligence Dashboard",
   description:
     "Advanced AI assistant dashboard with quantum processing, neural networks, and real-time data analysis capabilities.",
   keywords: [
@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "quantum computing",
     "neural networks",
   ],
-  authors: [{ name: "AI Assistant Pro Team" }],
-  creator: "AI Assistant Pro",
-  publisher: "AI Assistant Pro",
+  authors: [{ name: "GET AI Assistant Team" }],
+  creator: "GET AI Assistant",
+  publisher: "GET AI Assistant",
   robots: "index, follow",
   openGraph: {
-    title: "AI Assistant Pro - Advanced Quantum Intelligence Dashboard",
+    title: "GET AI Assistant - Advanced Quantum Intelligence Dashboard",
     description:
       "Advanced AI assistant dashboard with quantum processing, neural networks, and real-time data analysis capabilities.",
     type: "website",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Assistant Pro - Advanced Quantum Intelligence Dashboard",
+    title: "GET AI Assistant - Advanced Quantum Intelligence Dashboard",
     description:
       "Advanced AI assistant dashboard with quantum processing, neural networks, and real-time data analysis capabilities.",
   },

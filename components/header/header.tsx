@@ -55,9 +55,9 @@ export function Header({
           <div className="w-12 h-12 bg-gradient-to-br from-[#3B82F6] to-[#1E40AF] rounded-xl flex items-center justify-center shadow-lg">
             <Brain className="h-6 w-6 text-white" />
           </div>
-          <div>
+          <div className="hidden lg:block">
             <h1 className="text-xl font-semibold text-[#111827]">
-              AI Assistant Pro
+              GET AI Assistant
             </h1>
             <p className="text-sm text-[#3b82f6]">
               Advanced Quantum Intelligence • Real-time Data Analysis
@@ -88,7 +88,7 @@ export function Header({
 
           {/* Profile dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-2 p-2 rounded-md">
+            <DropdownMenuTrigger className="flex items-center gap-2 p-2 rounded-md hover:bg-transparent focus:bg-transparent focus:outline-none">
               <Avatar className="w-8 h-8">
                 <AvatarImage src={user.avatar} />
                 <AvatarFallback className="bg-[#e5e7eb] text-[#374151] font-medium">
@@ -98,7 +98,8 @@ export function Header({
                     .join("")}
                 </AvatarFallback>
               </Avatar>
-              <div className="text-left">
+              {/* Desktop: Show name and role */}
+              <div className="text-left hidden lg:block">
                 <div className="text-sm font-medium text-[#111827]">
                   {user.name}
                 </div>
@@ -106,7 +107,14 @@ export function Header({
               </div>
               <ChevronDown className="h-4 w-4 text-gray-500" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-40">
+            <DropdownMenuContent align="end" className="w-56">
+              {/* Mobile: Show user info at top */}
+              <div className="lg:hidden px-2 py-1.5 border-b border-[#e5e7eb]">
+                <div className="text-sm font-medium text-[#111827]">
+                  {user.name}
+                </div>
+                <div className="text-xs text-[#6b7280]">{user.role}</div>
+              </div>
               <DropdownMenuItem
                 onClick={() => {
                   console.log("Dark mode clicked");

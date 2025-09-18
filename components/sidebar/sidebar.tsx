@@ -2,7 +2,7 @@ import { AIInsights } from "./ai-insights";
 import { SmartPrompts } from "./smart-prompts";
 import { UsageMetrics } from "./usage-metrics";
 import { ConnectedSystems } from "./connected-systems";
-import { Brain, ChevronLeft, ChevronRight } from "lucide-react";
+import { Brain, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type {
   AIInsight,
@@ -77,19 +77,31 @@ export function Sidebar({
                   <Brain className="h-4 w-4 text-white" />
                 </div>
                 <span className="font-semibold text-[#111827]">
-                  AI Assistant Pro
+                  GET AI Assistant
                 </span>
               </div>
 
-              {/* Desktop Toggle Button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-6 w-6 p-0 text-[#6b7280] hover:bg-gray-100 rounded-full hidden lg:flex"
-                onClick={onToggle}
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
+              <div className="flex items-center gap-2">
+                {/* Mobile Close Button */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-6 w-6 p-0 text-[#6b7280] hover:bg-gray-100 rounded-full lg:hidden"
+                  onClick={onMobileToggle}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+
+                {/* Desktop Toggle Button */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-6 w-6 p-0 text-[#6b7280] hover:bg-gray-100 rounded-full hidden lg:flex"
+                  onClick={onToggle}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+              </div>
             </>
           )}
         </div>
