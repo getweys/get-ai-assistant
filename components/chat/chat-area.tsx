@@ -14,7 +14,7 @@ export const ChatArea = forwardRef<HTMLDivElement, ChatAreaProps>(
     return (
       <div
         ref={ref}
-        className="flex-1 overflow-y-auto bg-[#f8fafc] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
+        className="flex-1 overflow-y-auto bg-background scrollbar-thin scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent dark:scrollbar-thumb-muted-foreground/30"
       >
         <div className="p-6 space-y-6 pb-8">
           <WelcomeMessage />

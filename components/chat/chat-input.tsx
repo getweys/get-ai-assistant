@@ -55,7 +55,7 @@ export function ChatInput({
   }, []);
 
   return (
-    <div className="p-4 md:p-6 bg-white">
+    <div className="p-4 md:p-6 bg-background">
       <div className="flex items-center gap-2">
         <div className="flex-1 relative">
           <Input
@@ -63,14 +63,14 @@ export function ChatInput({
             onChange={(e) => onChange(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Ask me anything about your data, request analytics, or generate dashboards..."
-            className="pr-12 border-gray-200 min-h-[44px] resize-none focus:border-blue-300 focus:ring-1 focus:ring-blue-300"
+            className="pr-12 border-border min-h-[44px] resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:focus:border-blue-400 dark:focus:ring-blue-400"
             disabled={disabled || isLoading}
           />
           <div className="absolute right-2 top-1/2 -translate-y-1/2">
             <Button
               variant="ghost"
               size="sm"
-              className="h-8 w-8 p-0 hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+              className="h-8 w-8 p-0 hover:bg-accent text-muted-foreground hover:text-foreground transition-colors duration-200"
               title="Voice input"
             >
               <Mic className="h-4 w-4" />
@@ -83,7 +83,7 @@ export function ChatInput({
             ref={emojiButtonRef}
             variant="ghost"
             size="sm"
-            className="h-8 w-8 p-0 hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+            className="h-8 w-8 p-0 hover:bg-accent text-muted-foreground hover:text-foreground transition-colors duration-200"
             title="Emoji"
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
           >
@@ -113,7 +113,7 @@ export function ChatInput({
         <Button
           onClick={onSend}
           disabled={!value.trim() || isLoading}
-          className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 h-8 w-8 p-0 rounded-lg transition-all duration-200 flex items-center justify-center"
+          className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:opacity-50 h-8 w-8 p-0 rounded-lg transition-all duration-200 flex items-center justify-center"
         >
           {isLoading ? (
             <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -124,12 +124,14 @@ export function ChatInput({
       </div>
 
       <div className="flex items-center justify-between mt-3">
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-muted-foreground">
           Press Enter to send • Shift+Enter for new line
         </p>
         <div className="flex items-center gap-1">
-          <Shield className="h-3 w-3 text-green-600" />
-          <span className="text-xs text-green-600">Secure & Encrypted</span>
+          <Shield className="h-3 w-3 text-green-600 dark:text-green-400" />
+          <span className="text-xs text-green-600 dark:text-green-400">
+            Secure & Encrypted
+          </span>
         </div>
       </div>
     </div>
