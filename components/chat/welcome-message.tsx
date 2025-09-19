@@ -13,19 +13,19 @@ export function WelcomeMessage() {
   return (
     <div className="mb-6">
       <div className="flex items-start gap-4">
-        <div className="w-10 h-10 bg-gradient-to-br from-[#3B82F6] to-[#1E40AF] rounded-full flex items-center justify-center shadow-md">
+        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 rounded-full flex items-center justify-center shadow-md">
           <Brain className="h-5 w-5 text-white" />
         </div>
         <div className="flex-1">
-          <div className="bg-white rounded-2xl rounded-tl-md p-4 shadow-sm border border-[#e5e7eb] max-w-4xl">
+          <div className="bg-card rounded-2xl rounded-tl-md p-4 shadow-sm border border-border max-w-4xl">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-2 h-2 bg-[#3b82f6] rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-[#3b82f6]">
+              <div className="w-2 h-2 bg-blue-500 dark:bg-blue-400 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
                 NeuroAI Initialized
               </span>
             </div>
 
-            <p className="text-[#374151] leading-relaxed mb-4">
+            <p className="text-card-foreground leading-relaxed mb-4">
               Welcome to the future of AI assistance! I'm your advanced NeuroAI
               companion, powered by quantum processing and real-time neural
               networks. I can analyze vast datasets, generate predictive
@@ -43,7 +43,7 @@ export function WelcomeMessage() {
               ))}
             </div>
 
-            <p className="text-sm text-[#6b7280]">
+            <p className="text-sm text-muted-foreground">
               Try: "Analyze market trends with quantum predictions" or "Generate
               neural network dashboard for customer behavior"
             </p>
