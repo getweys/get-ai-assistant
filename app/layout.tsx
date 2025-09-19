@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/molecules/theme-provider";
 import "./globals.css";
 import { ReactNode } from "react";
+import { ToastProvider } from "@radix-ui/react-toast";
 
 export const metadata: Metadata = {
   title: "GET AI Assistant - Advanced Quantum Intelligence Dashboard",
@@ -51,7 +52,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ToastProvider>{children}</ToastProvider>
         </ThemeProvider>
         <Analytics />
       </body>

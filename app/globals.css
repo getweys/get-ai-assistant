@@ -115,6 +115,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-primary: #f8fafc;
   --color-border-white: #e2e8f0;
+  --color-semigray: #898989;
 }
 
 @layer base {
