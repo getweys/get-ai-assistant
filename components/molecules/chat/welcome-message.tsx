@@ -1,12 +1,11 @@
-import { Card, CardContent } from "@/components/atoms/card";
 import { Brain } from "lucide-react";
-import { CapabilityCard } from "./capability-card";
+import { CapabilityCard, CardColors } from "./capability-card";
 
 const capabilities = [
-  { icon: "📈", title: "Advanced Analytics", color: "blue" as const },
-  { icon: "🧠", title: "Neural Processing", color: "green" as const },
-  { icon: "⚛️", title: "Quantum Computing", color: "gray" as const },
-  { icon: "⚡", title: "Real-time Data", color: "orange" as const },
+  { icon: "📈", title: "Advanced Analytics", color: CardColors.Blue as const },
+  { icon: "🧠", title: "Neural Processing", color: CardColors.Green as const },
+  { icon: "⚛️", title: "Quantum Computing", color: CardColors.Gray as const },
+  { icon: "⚡", title: "Real-time Data", color: CardColors.Orange as const },
 ];
 
 export function WelcomeMessage() {

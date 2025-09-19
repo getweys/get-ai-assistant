@@ -1,9 +1,16 @@
 import { Card, CardContent } from "@/components/atoms/card";
 
+export enum CardColors {
+  Blue = "blue",
+  Green = "green",
+  Gray = "gray",
+  Orange = "orange",
+}
+
 interface CapabilityCardProps {
   icon: string;
   title: string;
-  color: "blue" | "green" | "gray" | "orange";
+  color: CardColors;
 }
 
 const capabilityColors = {

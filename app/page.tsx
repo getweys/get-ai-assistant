@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Sidebar } from "@/components/sidebar/sidebar";
-import { Header } from "@/components/header/header";
-import { ChatArea } from "@/components/chat/chat-area";
-import { ChatInput } from "@/components/chat/chat-input";
+import { Sidebar } from "@/components/organisms/sidebar";
+import { Header } from "@/components/organisms/header";
+import { ChatArea } from "@/components/organisms/chat-area";
+import { ChatInput } from "@/components/organisms/chat-input";
 import { ErrorBoundary } from "@/errors/error-boundary";
 import { useChat } from "@/hooks/use-chat";
 import {
@@ -68,7 +68,7 @@ export default function AIAssistantDashboard() {
 
   return (
     <ErrorBoundary>
-      <div className="h-screen bg-[#f8fafc] flex">
+      <div className="h-screen bg-primary flex">
         {!isFullscreen && (
           <Sidebar
             insights={mockInsights}
@@ -105,7 +105,7 @@ export default function AIAssistantDashboard() {
             />
           </div>
 
-          <div className="sticky bottom-0 bg-white border-t border-[#e2e8f0] shadow-lg">
+          <div className="sticky bottom-0 bg-white border-t border-border-white shadow-lg">
             <ChatInput
               value={inputValue}
               onChange={setInputValue}

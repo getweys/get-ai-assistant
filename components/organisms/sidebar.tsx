@@ -1,7 +1,7 @@
-import { AIInsights } from "./ai-insights";
-import { SmartPrompts } from "./smart-prompts";
-import { UsageMetrics } from "./usage-metrics";
-import { ConnectedSystems } from "./connected-systems";
+import { AIInsights } from "@/components/molecules/sidebar/ai-insights";
+import { SmartPrompts } from "@/components/molecules/sidebar/smart-prompts";
+import { UsageMetrics } from "@/components/molecules/sidebar/usage-metrics";
+import { ConnectedSystems } from "@/components/molecules/sidebar/connected-systems";
 import { Brain, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/atoms/button";
 import type {

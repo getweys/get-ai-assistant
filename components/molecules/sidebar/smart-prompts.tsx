@@ -3,6 +3,7 @@ import { Button } from "@/components/atoms/button";
 import { Badge } from "@/components/atoms/badge";
 import { useState } from "react";
 import type { SmartPrompt } from "@/types";
+import { additionalPrompts } from "@/lib/mock-data";
 
 interface SmartPromptsProps {
   prompts: SmartPrompt[];
@@ -27,54 +28,6 @@ const badgeVariants = {
   popular:
     "bg-yellow-500 text-gray-900 border-0 hover:bg-yellow-500 dark:bg-yellow-600 dark:text-gray-900 dark:hover:bg-yellow-600",
 };
-
-// Additional prompt sets for pagination
-const additionalPrompts: SmartPrompt[] = [
-  {
-    id: "3",
-    title: "Sales Performance",
-    description: "Analyze quarterly sales trends and forecasts",
-    icon: "📈",
-    badge: {
-      text: "🔥 High-Impact",
-      variant: "high-impact",
-    },
-    color: "green",
-  },
-  {
-    id: "4",
-    title: "Market Analysis",
-    description: "Deep dive into competitor landscape",
-    icon: "🎯",
-    badge: {
-      text: "⭐ Popular",
-      variant: "popular",
-    },
-    color: "blue",
-  },
-  {
-    id: "5",
-    title: "Financial Health",
-    description: "Comprehensive financial risk assessment",
-    icon: "💰",
-    badge: {
-      text: "🔥 High-Impact",
-      variant: "high-impact",
-    },
-    color: "green",
-  },
-  {
-    id: "6",
-    title: "Product Analytics",
-    description: "User engagement and feature adoption",
-    icon: "📱",
-    badge: {
-      text: "⭐ Popular",
-      variant: "popular",
-    },
-    color: "blue",
-  },
-];
 
 export function SmartPrompts({ prompts }: SmartPromptsProps) {
   const [currentPage, setCurrentPage] = useState(0);

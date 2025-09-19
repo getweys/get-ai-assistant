@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/atoms/avatar";
 import { Brain } from "lucide-react";
 import type { Message } from "@/types";
+import { splitName } from "@/lib/helper";
 
 interface MessageBubbleProps {
   message: Message;
@@ -61,10 +62,7 @@ export function MessageBubble({
           <Avatar className="w-8 h-8 border border-border">
             <AvatarImage src={userAvatar} />
             <AvatarFallback className="bg-muted text-muted-foreground font-medium text-xs">
-              {userName
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+              {splitName(userName)}
             </AvatarFallback>
           </Avatar>
         </div>
