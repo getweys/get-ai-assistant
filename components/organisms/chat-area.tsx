@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
-import { MessageBubble } from "./message-bubble";
-import { WelcomeMessage } from "./welcome-message";
+import { MessageBubble } from "@/components/molecules/chat/message-bubble";
+import { WelcomeMessage } from "@/components/molecules/chat/welcome-message";
 import type { Message } from "@/types";
 
 interface ChatAreaProps {
