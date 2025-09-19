@@ -3,15 +3,19 @@
 import { Button } from "@/components/atoms/button";
 
 import Text, { Tags } from "@/components/atoms/text";
-import { SigninSchemaTypes } from "@/schema/signin.schema";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SigninSchema } from "@/schema/signin.schema";
+
 import { useRouter } from "next/navigation";
 
 import { ControlInput } from "@/components/atoms/control-input";
 import { Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  ForgetPasswordSchema,
+  ForgetPasswordSchemaTypes,
+} from "@/schema/forget-password.schema";
 
 const page = () => {
   const router = useRouter();
@@ -20,16 +24,16 @@ const page = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<SigninSchemaTypes>({
-    resolver: zodResolver(SigninSchema),
+  } = useForm<ForgetPasswordSchemaTypes>({
+    resolver: zodResolver(ForgetPasswordSchema),
     mode: "onChange",
     defaultValues: {
-      email: "",
       password: "",
+      confirmPassword: "",
     },
   });
 
-  const onSubmit: SubmitHandler<SigninSchemaTypes> = (data) => {
+  const onSubmit: SubmitHandler<ForgetPasswordSchemaTypes> = (data) => {
     console.log(data);
     router.push("/");
   };
@@ -51,35 +55,19 @@ const page = () => {
         <Text
           containerTag={Tags.Paragraph}
           className={cn(
-            "text-2xl font-semibold text-left tracking-[0.6px] mb-1 dark:text-white"
+            "text-2xl font-semibold text-center tracking-[0.6px] mb-1 dark:text-white"
           )}
         >
-          Welcome Back
+          Set new password
         </Text>
-        <Text
-          containerTag={Tags.Paragraph}
-          className="text-base text-semigray text-left tracking-[0.7px]"
-        >
-          Sign in to access your AI assistant
-        </Text>
+
         <div className="flex flex-col gap-6 py-8">
           <div className="flex flex-col gap-1 ">
-            <label className="text-xs font-[450] tracking-[0.5px]">Email</label>
-            <ControlInput
-              className="border rounded-sm px-4 py-2  placeholder:text-xs text-sm text-semigray dark:focus-visible:bg-blue-100 dark:bg-gray-300 focus-visible:!border-blue-500  focus-visible:!ring-[1px] focus-visible:bg-blue-50"
-              placeholder="Email"
-              type="text"
-              control={control}
-              name="email"
-              errors={errors}
-            />
-          </div>
-          <div className="flex flex-col gap-1">
             <label className="text-xs font-[450] tracking-[0.5px]">
               Password
             </label>
             <ControlInput
-              className="border rounded-sm px-4 py-2 placeholder:text-xs text-sm text-semigray  dark:focus-visible:bg-blue-100 dark:bg-gray-300 focus-visible:!border-blue-500  focus-visible:!ring-[1px] focus-visible:bg-blue-50"
+              className="border rounded-sm px-4 py-2  placeholder:text-xs text-sm text-semigray dark:focus-visible:bg-blue-100 dark:bg-gray-300 focus-visible:!border-blue-500  focus-visible:!ring-[1px] focus-visible:bg-blue-50"
               placeholder="Password"
               type="password"
               control={control}
@@ -87,29 +75,23 @@ const page = () => {
               errors={errors}
             />
           </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-xs font-[450] tracking-[0.5px]">
+              Confirm Password
+            </label>
+            <ControlInput
+              className="border rounded-sm px-4 py-2 placeholder:text-xs text-sm text-semigray  dark:focus-visible:bg-blue-100 dark:bg-gray-300 focus-visible:!border-blue-500  focus-visible:!ring-[1px] focus-visible:bg-blue-50"
+              placeholder="Confirm Password"
+              type="password"
+              control={control}
+              name="confirmPassword"
+              errors={errors}
+            />
+          </div>
         </div>
         <Button className="bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 text-white mt-2">
-          Sign in
+          Send
         </Button>
-        <div className="flex justify-between mt-2.5">
-          <Text
-            containerTag={Tags.Paragraph}
-            className="text-xs text-center  font-[450] "
-            onClick={() => router.push("/signup")}
-          >
-            Create an account?{" "}
-            <span className="hover:text-blue-600 hover:underline cursor-pointer">
-              Sign up
-            </span>
-          </Text>
-          <Text
-            containerTag={Tags.Paragraph}
-            className="text-xs text-center font-[450] hover:text-blue-600 hover:underline cursor-pointer"
-            onClick={() => router.push("/forget-password")}
-          >
-            Forgot password?
-          </Text>
-        </div>
       </form>
     </div>
   );

@@ -15,12 +15,22 @@ interface PropsType {
   containerTag: Tags;
   children: ReactNode;
   className: string;
+  onClick?: () => void;
 }
 
-const Text: FC<PropsType> = ({ containerTag, children, className }) => {
+const Text: FC<PropsType> = ({
+  containerTag,
+  children,
+  className,
+  onClick,
+}) => {
   const Container = containerTag;
 
-  return <Container className={className}>{children}</Container>;
+  return (
+    <Container className={className} onClick={onClick}>
+      {children}
+    </Container>
+  );
 };
 
 export default Text;

@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import type { User } from "@/types";
+import { splitName } from "@/lib/helper";
 
 interface HeaderProps {
   user: User;
@@ -101,10 +102,7 @@ export function Header({
               <Avatar className="w-8 h-8">
                 <AvatarImage src={user.avatar} />
                 <AvatarFallback className="bg-muted text-muted-foreground font-medium">
-                  {user.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
+                  {splitName(user.name)}
                 </AvatarFallback>
               </Avatar>
               {/* Desktop: Show name and role */}

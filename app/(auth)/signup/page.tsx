@@ -3,15 +3,17 @@
 import { Button } from "@/components/atoms/button";
 
 import Text, { Tags } from "@/components/atoms/text";
-import { SigninSchemaTypes } from "@/schema/signin.schema";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SigninSchema } from "@/schema/signin.schema";
 import { useRouter } from "next/navigation";
 
 import { ControlInput } from "@/components/atoms/control-input";
 import { Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SignupSchema, SignupSchemaTypes } from "@/schema/signup.schema";
+import { SocialLinks } from "@/lib/dummyData";
+import { socialLinksTypes } from "@/types";
+import ControlButton from "@/components/atoms/ControlButton";
 
 const page = () => {
   const router = useRouter();
@@ -20,16 +22,17 @@ const page = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<SigninSchemaTypes>({
-    resolver: zodResolver(SigninSchema),
+  } = useForm<SignupSchemaTypes>({
+    resolver: zodResolver(SignupSchema),
     mode: "onChange",
     defaultValues: {
+      fullName: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit: SubmitHandler<SigninSchemaTypes> = (data) => {
+  const onSubmit: SubmitHandler<SignupSchemaTypes> = (data) => {
     console.log(data);
     router.push("/");
   };
@@ -54,19 +57,32 @@ const page = () => {
             "text-2xl font-semibold text-left tracking-[0.6px] mb-1 dark:text-white"
           )}
         >
-          Welcome Back
+          Create an Account
         </Text>
         <Text
           containerTag={Tags.Paragraph}
           className="text-base text-semigray text-left tracking-[0.7px]"
         >
-          Sign in to access your AI assistant
+          Get start your journey with AI assistant
         </Text>
         <div className="flex flex-col gap-6 py-8">
+          <div className="flex flex-col gap-1">
+            <label className="text-xs font-[450] tracking-[0.5px]">
+              Full Name
+            </label>
+            <ControlInput
+              className="border rounded-sm px-4 py-2 placeholder:text-xs text-sm text-semigray dark:bg-gray-300 focus-visible:!border-blue-500  dark:focus-visible:bg-blue-100 focus-visible:!ring-[1px] focus-visible:bg-blue-50 "
+              placeholder="Full Name"
+              type="text"
+              control={control}
+              name="fullName"
+              errors={errors}
+            />
+          </div>
           <div className="flex flex-col gap-1 ">
             <label className="text-xs font-[450] tracking-[0.5px]">Email</label>
             <ControlInput
-              className="border rounded-sm px-4 py-2  placeholder:text-xs text-sm text-semigray dark:focus-visible:bg-blue-100 dark:bg-gray-300 focus-visible:!border-blue-500  focus-visible:!ring-[1px] focus-visible:bg-blue-50"
+              className="border rounded-sm px-4 py-2 placeholder:text-xs text-sm text-semigray dark:bg-gray-300 dark:focus-visible:bg-blue-100 focus-visible:!border-blue-500  focus-visible:!ring-[1px] focus-visible:bg-blue-50"
               placeholder="Email"
               type="text"
               control={control}
@@ -79,7 +95,7 @@ const page = () => {
               Password
             </label>
             <ControlInput
-              className="border rounded-sm px-4 py-2 placeholder:text-xs text-sm text-semigray  dark:focus-visible:bg-blue-100 dark:bg-gray-300 focus-visible:!border-blue-500  focus-visible:!ring-[1px] focus-visible:bg-blue-50"
+              className="border rounded-sm px-4 py-2 placeholder:text-xs text-sm text-semigray dark:bg-gray-300 focus-visible:!border-blue-500 dark:focus-visible:bg-blue-100 focus-visible:!ring-[1px] focus-visible:bg-blue-50"
               placeholder="Password"
               type="password"
               control={control}
@@ -88,18 +104,34 @@ const page = () => {
             />
           </div>
         </div>
-        <Button className="bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 text-white mt-2">
-          Sign in
+        <div className="flex gap-2">
+          {SocialLinks.map((link: socialLinksTypes) => {
+            return (
+              <ControlButton
+                key={link.id}
+                icon={link.icon}
+                title={link.title}
+                iconStyles={cn(
+                  link.id === 1 && "text-blue-500",
+                  link.id === 2 && "text-blue-300",
+                  link.id === 3 && "text-blue-500"
+                )}
+              />
+            );
+          })}
+        </div>
+        <Button className="bg-gradient-to-br mt-8 from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 text-white ">
+          Sign up
         </Button>
-        <div className="flex justify-between mt-2.5">
+        <div className="flex justify-between mt-2.5 ">
           <Text
             containerTag={Tags.Paragraph}
-            className="text-xs text-center  font-[450] "
-            onClick={() => router.push("/signup")}
+            className="text-xs text-center font-[450]"
+            onClick={() => router.push("/signin")}
           >
-            Create an account?{" "}
+            Already have an account?{" "}
             <span className="hover:text-blue-600 hover:underline cursor-pointer">
-              Sign up
+              Sign in
             </span>
           </Text>
           <Text
