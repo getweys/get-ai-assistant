@@ -41,7 +41,7 @@ const page = () => {
   return (
     <div className="bg-slate-100 h-screen flex flex-col gap-8 justify-center items-center dark:bg-dark-background">
       <form
-        className="h-fit max-w-[450px] w-full  bg-white px-8 py-10 rounded-xl shadow-2xl flex flex-col dark:border-dark-border dark:border-1 dark:bg-dark-form-background"
+        className="h-fit max-w-[500px] w-full  bg-white px-8 py-10 rounded-md shadow-2xl flex flex-col dark:border-dark-border dark:border-1 dark:bg-dark-form-background dark:shadow-[0_0_12px_dark-border] dark:shadow-dark-border  max-sm:w-[90%]"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex justify-center items-center gap-3">
@@ -61,8 +61,8 @@ const page = () => {
           Set new password
         </Text>
 
-        <div className="flex flex-col gap-6 py-7">
-          <div className="flex flex-col gap-1 ">
+        <div className="flex flex-col gap-8 py-7">
+          <div className="flex flex-col gap-1.5 ">
             <label className="text-xs font-[450] tracking-[0.5px] dark:text-white">
               Password
             </label>
@@ -75,7 +75,7 @@ const page = () => {
               errors={errors}
             />
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1.5">
             <label className="text-xs font-[450] tracking-[0.5px] dark:text-white">
               Confirm Password
             </label>
