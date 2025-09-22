@@ -37,7 +37,7 @@ export default function NotFound() {
           <div className="animate-slide-up animation-delay-500 pt-4">
             <Link
               href="/"
-              className="dark:bg-primary bg-black hover:bg-black focus:ring-primary focus:ring-offset-secondary inline-flex transform items-center rounded-lg px-6 py-3 font-medium text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl focus:ring-2 focus:ring-offset-2 focus:outline-none"
+              className="dark:bg-primary bg-black hover:bg-black dark:text-black focus:ring-primary focus:ring-offset-secondary inline-flex transform items-center rounded-lg px-6 py-3 font-medium text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl focus:ring-2 focus:ring-offset-2 focus:outline-none"
             >
               <svg
                 className="mr-2 h-4 w-4"
