@@ -136,7 +136,7 @@ const page = () => {
         >
           Sign up
         </Button>
-        <div className="flex justify-between mt-2.5 ">
+        <div className="flex justify-center mt-2.5 ">
           <Text
             containerTag={Tags.Paragraph}
             className="text-xs text-center font-[450] dark:text-black"
@@ -147,13 +147,13 @@ const page = () => {
               Sign in
             </span>
           </Text>
-          <Text
+          {/* <Text
             containerTag={Tags.Paragraph}
             className="text-xs text-center font-[450] hover:text-blue-600 hover:underline cursor-pointer dark:hover:text-blue-600 dark:text-black"
             onClick={() => router.push("/forget-password")}
           >
             Forgot password?
-          </Text>
+          </Text> */}
         </div>
       </form>
     </div>
