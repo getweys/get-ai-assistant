@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/molecules/theme-provider";
 import "./globals.css";
+import { ReactNode } from "react";
+import { ToastProvider } from "@radix-ui/react-toast";
+import { Provider } from "@/redux/provider";
 
 export const metadata: Metadata = {
   title: "GET AI Assistant - Advanced Quantum Intelligence Dashboard",
@@ -39,19 +42,23 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <Provider>
+          {" "}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ToastProvider>{children}</ToastProvider>
+          </ThemeProvider>
+        </Provider>
+
         <Analytics />
       </body>
     </html>

@@ -1,10 +1,4 @@
-import type {
-  AIInsight,
-  SmartPrompt,
-  UsageMetric,
-  ConnectedSystem,
-  User,
-} from "@/types";
+import type { AIInsight, UsageMetric, ConnectedSystem, User } from "@/types";
 
 export const mockUser: User = {
   id: "1",
@@ -120,5 +114,72 @@ export const mockSystems: ConnectedSystem[] = [
     icon: "📊",
     status: "offline",
     lastSync: "Processing...",
+  },
+];
+
+import { Message, SmartPrompt } from "@/types";
+
+// Additional prompt sets for pagination
+export const additionalPrompts: SmartPrompt[] = [
+  {
+    id: "3",
+    title: "Sales Performance",
+    description: "Analyze quarterly sales trends and forecasts",
+    icon: "📈",
+    badge: {
+      text: "🔥 High-Impact",
+      variant: "high-impact",
+    },
+    color: "green",
+  },
+  {
+    id: "4",
+    title: "Market Analysis",
+    description: "Deep dive into competitor landscape",
+    icon: "🎯",
+    badge: {
+      text: "⭐ Popular",
+      variant: "popular",
+    },
+    color: "blue",
+  },
+  {
+    id: "5",
+    title: "Financial Health",
+    description: "Comprehensive financial risk assessment",
+    icon: "💰",
+    badge: {
+      text: "🔥 High-Impact",
+      variant: "high-impact",
+    },
+    color: "green",
+  },
+  {
+    id: "6",
+    title: "Product Analytics",
+    description: "User engagement and feature adoption",
+    icon: "📱",
+    badge: {
+      text: "⭐ Popular",
+      variant: "popular",
+    },
+    color: "blue",
+  },
+];
+
+export const initialMessages: Message[] = [
+  {
+    id: "1",
+    type: "assistant",
+    content:
+      "Welcome to the future of AI assistance! I'm your advanced NeuroAI companion, powered by quantum processing and real-time neural networks. I can analyze vast datasets, generate predictive insights, and create comprehensive visualizations in milliseconds.",
+    timestamp: new Date("2024-12-15T10:54:17Z"),
+  },
+  {
+    id: "2",
+    type: "user",
+    content:
+      "Generate a comprehensive quantum analytics dashboard showing predictive market trends, neural network insights, and real-time performance metrics for our financial portfolio",
+    timestamp: new Date("2024-12-15T10:55:04Z"),
   },
 ];

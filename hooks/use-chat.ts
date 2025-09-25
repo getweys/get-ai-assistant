@@ -1,24 +1,8 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
 import type { Message, ChatState, ChatActions } from "@/types";
-
-const initialMessages: Message[] = [
-  {
-    id: "1",
-    type: "assistant",
-    content:
-      "Welcome to the future of AI assistance! I'm your advanced NeuroAI companion, powered by quantum processing and real-time neural networks. I can analyze vast datasets, generate predictive insights, and create comprehensive visualizations in milliseconds.",
-    timestamp: new Date("2024-12-15T10:54:17Z"),
-  },
-  {
-    id: "2",
-    type: "user",
-    content:
-      "Generate a comprehensive quantum analytics dashboard showing predictive market trends, neural network insights, and real-time performance metrics for our financial portfolio",
-    timestamp: new Date("2024-12-15T10:55:04Z"),
-  },
-];
+import { initialMessages } from "@/lib/mock-data";
 
 export function useChat(): ChatState & ChatActions {
   const [messages, setMessages] = useState<Message[]>(initialMessages);

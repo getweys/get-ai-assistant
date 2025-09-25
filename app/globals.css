@@ -113,6 +113,14 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-primary: #f8fafc;
+  --color-border-white: #e2e8f0;
+  --color-semigray: #898989;
+  --color-dark-form-background: #1c1d24;
+  --color-text-dark: #7d8a9c;
+  --color-dark-input-bg: #212226;
+  --color-dark-border: #102446;
+  --color-dark-background: #060c16;
 }
 
 @layer base {
@@ -140,5 +148,54 @@
 
   .scrollbar-thin::-webkit-scrollbar {
     width: 6px;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: #212226 !important;
+    -webkit-text-fill-color: #898989 !important;
+    caret-color: #898989 !important;
+  }
+
+  .loader {
+    width: 20px;
+    aspect-ratio: 1;
+    display: grid;
+    border-radius: 50%;
+    background: linear-gradient(
+          0deg,
+          rgb(255 255 255 / 50%) 30%,
+          #0000 0 70%,
+          rgb(255 255 255 / 100%) 0
+        )
+        50% / 8% 100%,
+      linear-gradient(
+          90deg,
+          rgb(255 255 255 / 25%) 30%,
+          #0000 0 70%,
+          rgb(255 255 255 / 75%) 0
+        )
+        50% / 100% 8%;
+    background-repeat: no-repeat;
+    animation: l23 1s infinite steps(12);
+  }
+  .loader::before,
+  .loader::after {
+    content: "";
+    grid-area: 1/1;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.915;
+    transform: rotate(30deg);
+  }
+  .loader::after {
+    opacity: 0.83;
+    transform: rotate(60deg);
+  }
+  @keyframes l23 {
+    100% {
+      transform: rotate(1turn);
+    }
   }
 }
