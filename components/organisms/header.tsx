@@ -18,7 +18,8 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import type { User } from "@/types";
-import { splitName } from "@/lib/helper";
+import { useRouter } from "next/navigation";
+import { useProfileQuery } from "@/redux/slice/apiSlices/user.slice";
 
 interface HeaderProps {
   user: User;
@@ -29,6 +30,7 @@ interface HeaderProps {
   onMobileMenuToggle?: () => void;
   isSidebarCollapsed?: boolean;
   isMobileMenuOpen?: boolean;
+  loader: boolean;
 }
 
 export function Header({
@@ -40,6 +42,7 @@ export function Header({
   onMobileMenuToggle,
   isSidebarCollapsed = false,
   isMobileMenuOpen = false,
+  loader,
 }: HeaderProps) {
   const { theme, setTheme } = useTheme();
 
@@ -47,6 +50,8 @@ export function Header({
     setTheme(theme === "dark" ? "light" : "dark");
     onDarkMode?.();
   };
+
+  const { data: userProfile, isLoading } = useProfileQuery({});
 
   return (
     <div className="bg-background border-b border-border p-6 py-2.5">
@@ -102,27 +107,42 @@ export function Header({
               <Avatar className="w-8 h-8">
                 <AvatarImage src={user.avatar} />
                 <AvatarFallback className="bg-muted text-muted-foreground font-medium">
-                  {splitName(user.name)}
+                  {userProfile?.data?.fullName}
                 </AvatarFallback>
               </Avatar>
               {/* Desktop: Show name and role */}
-              <div className="text-left hidden lg:block">
-                <div className="text-sm font-medium text-foreground">
-                  {user.name}
+              {isLoading ? (
+                <div className="loader"></div>
+              ) : (
+                <div className="text-left hidden lg:block">
+                  <div className="text-sm font-medium text-foreground">
+                    {userProfile?.data?.fullName}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {userProfile?.data?.role}
+                  </div>
                 </div>
-                <div className="text-xs text-muted-foreground">{user.role}</div>
-              </div>
+              )}
               <ChevronDown className="h-4 w-4 text-muted-foreground" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
               {/* Mobile: Show user info at top */}
-              <div className="lg:hidden px-2 py-1.5 border-b border-border">
-                <div className="text-sm font-medium text-foreground">
-                  {user.name}
+              {isLoading ? (
+                <div className="loader"></div>
+              ) : (
+                <div className="lg:hidden px-2 py-1.5 border-b border-border">
+                  <div className="text-sm font-medium text-foreground">
+                    {userProfile?.data?.fullName}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {userProfile?.data?.role}
+                  </div>
                 </div>
-                <div className="text-xs text-muted-foreground">{user.role}</div>
-              </div>
-              <DropdownMenuItem onClick={toggleTheme}>
+              )}
+              <DropdownMenuItem
+                onClick={toggleTheme}
+                className="cursor-pointer"
+              >
                 {theme === "dark" ? (
                   <Sun className="mr-2 h-4 w-4" />
                 ) : (
@@ -135,8 +155,10 @@ export function Header({
                   console.log("Logout clicked");
                   onLogout?.();
                 }}
+                className="cursor-pointer"
               >
                 <LogOut className="mr-2 h-4 w-4" />
+                {loader ? <div className="loader"></div> : null}
                 <span>Logout</span>
               </DropdownMenuItem>
             </DropdownMenuContent>

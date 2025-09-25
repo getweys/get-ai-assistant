@@ -12,9 +12,15 @@ import { useRouter } from "next/navigation";
 import { ControlInput } from "@/components/atoms/control-input";
 import { Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLoginMutation } from "@/redux/slice/apiSlices/auth.slice";
+import { setCookie } from "@/lib/cookies";
+import { REFRESH_TOKEN, SESSION, USER_ID } from "@/constants";
+import { toast } from "@/lib/toast-utils";
 
 const page = () => {
   const router = useRouter();
+
+  const [login, { isLoading }] = useLoginMutation({});
 
   const {
     control,
@@ -29,9 +35,28 @@ const page = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<SigninSchemaTypes> = (data) => {
-    console.log(data);
-    router.push("/ai-assistant-dashboard");
+  const onSubmit: SubmitHandler<SigninSchemaTypes> = async (data) => {
+    const payload = {
+      email: data.email,
+      password: data.password,
+    };
+
+    try {
+      const res = await login(payload);
+
+      if (res?.data) {
+        const userData = res?.data;
+        setCookie(SESSION, userData?.data?.accessToken);
+        setCookie(REFRESH_TOKEN, userData?.data?.refreshToken);
+        setCookie(USER_ID, userData?.data?.userId);
+        toast.success("Login successful!");
+        router.push("/ai-assistant-dashboard");
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } catch (error) {
+      toast.error("Something went wrong!");
+    }
   };
 
   return (
@@ -91,8 +116,9 @@ const page = () => {
           </div>
         </div>
         <Button
-          className="bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 text-white mt-2"
+          className="bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 text-white mt-2 cursor-pointer"
           type="submit"
+          loader={isLoading}
         >
           Sign in
         </Button>

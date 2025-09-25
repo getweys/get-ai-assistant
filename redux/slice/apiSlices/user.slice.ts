@@ -27,4 +27,4 @@ export const userSlice = createApi({
   }),
 });
 
-export const {} = userSlice;
+export const { useProfileQuery } = userSlice;

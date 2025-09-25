@@ -40,22 +40,39 @@ function Button({
   variant,
   size,
   asChild = false,
+  loader,
   ...props
 }: ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
+    loader?: boolean;
   }) {
   const Comp = asChild ? Slot : "button";
 
   return (
-    <Comp
-      data-slot="button"
-      className={cn(
-        "cursor-pointer",
-        buttonVariants({ variant, size, className })
+    <>
+      {loader ? (
+        <Comp
+          data-slot="button"
+          className={cn(
+            "cursor-pointer",
+            buttonVariants({ variant, size, className })
+          )}
+          {...props}
+        >
+          <div className="loader"></div>
+        </Comp>
+      ) : (
+        <Comp
+          data-slot="button"
+          className={cn(
+            "cursor-pointer",
+            buttonVariants({ variant, size, className })
+          )}
+          {...props}
+        />
       )}
-      {...props}
-    />
+    </>
   );
 }
 

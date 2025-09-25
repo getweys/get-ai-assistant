@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/molecules/theme-provider";
 import "./globals.css";
 import { ReactNode } from "react";
 import { ToastProvider } from "@radix-ui/react-toast";
+import { Provider } from "@/redux/provider";
 
 export const metadata: Metadata = {
   title: "GET AI Assistant - Advanced Quantum Intelligence Dashboard",
@@ -46,14 +47,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ToastProvider>{children}</ToastProvider>
-        </ThemeProvider>
+        <Provider>
+          {" "}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ToastProvider>{children}</ToastProvider>
+          </ThemeProvider>
+        </Provider>
+
         <Analytics />
       </body>
     </html>

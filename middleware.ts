@@ -140,7 +140,7 @@ export async function middleware(request: NextRequest) {
 
   // Handle unauthenticated users trying to access protected routes
   if (!hasValidToken && isProtectedPath) {
-    const response = NextResponse.redirect(new URL("/login", request.url));
+    const response = NextResponse.redirect(new URL("/signin", request.url));
 
     // Clear invalid cookies
     response.cookies.delete(SESSION);

@@ -14,6 +14,11 @@ import {
   mockMetrics,
   mockSystems,
 } from "@/lib/mock-data";
+import { useLogoutMutation } from "@/redux/slice/apiSlices/auth.slice";
+import { toast } from "@/lib/toast-utils";
+import { getCookie, removeCookie } from "@/lib/cookies";
+import { REFRESH_TOKEN, SESSION, USER_ID } from "@/constants";
+import { useRouter } from "next/navigation";
 
 const AIAssistantDashboard = () => {
   const { messages, isLoading, sendMessage } = useChat();
@@ -22,6 +27,9 @@ const AIAssistantDashboard = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const chatAreaRef = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
+  const [logout, { isLoading: logoutLoader }] = useLogoutMutation();
 
   const scrollToBottom = () => {
     if (chatAreaRef.current) {
@@ -53,9 +61,25 @@ const AIAssistantDashboard = () => {
     // TODO: Implement dark mode functionality
   };
 
-  const handleLogout = () => {
-    console.log("Logout clicked");
-    // TODO: Implement logout functionality
+  const handleLogout = async () => {
+    const refreshTokenValue = getCookie(REFRESH_TOKEN);
+    const payload = {
+      refreshToken: refreshTokenValue,
+    };
+    try {
+      const res = await logout(payload);
+      if (res) {
+        toast.success("Logout successfully!");
+        removeCookie(SESSION);
+        removeCookie(REFRESH_TOKEN);
+        removeCookie(USER_ID);
+        router.push("/signin");
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } catch {
+      toast.error("Something went wrong!");
+    }
   };
 
   const handleSidebarToggle = () => {
@@ -93,6 +117,7 @@ const AIAssistantDashboard = () => {
             onMobileMenuToggle={handleMobileMenuToggle}
             isSidebarCollapsed={isSidebarCollapsed}
             isMobileMenuOpen={isMobileMenuOpen}
+            loader={logoutLoader}
           />
 
           <div className="flex-1 overflow-hidden flex flex-col">

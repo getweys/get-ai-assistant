@@ -4,7 +4,7 @@ export function Toaster({
   expand = false,
   closeButton = true,
   richColors = true,
-  duration = 4000,
+  duration = 2000,
 } = {}) {
   return (
     <SonnerToaster
