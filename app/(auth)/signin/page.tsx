@@ -52,7 +52,7 @@ const page = () => {
         toast.success("Login successful!");
         router.push("/ai-assistant-dashboard");
       } else {
-        toast.error("Something went wrong!");
+        toast.error(res?.error?.data?.errors["Auth.InvalidCredentials"][0]);
       }
     } catch (error) {
       toast.error("Something went wrong!");
