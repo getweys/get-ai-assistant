@@ -113,6 +113,14 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-primary: #f8fafc;
+  --color-border-white: #e2e8f0;
+  --color-semigray: #898989;
+  --color-dark-form-background: #1c1d24;
+  --color-text-dark: #7d8a9c;
+  --color-dark-input-bg: #212226;
+  --color-dark-border: #102446;
+  --color-dark-background: #060c16;
 }
 
 @layer base {
@@ -140,5 +148,13 @@
 
   .scrollbar-thin::-webkit-scrollbar {
     width: 6px;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: #212226 !important;
+    -webkit-text-fill-color: #898989 !important;
+    caret-color: #898989 !important;
   }
 }
