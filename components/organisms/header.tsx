@@ -49,7 +49,7 @@ export function Header({
   loader,
 }: HeaderProps) {
   const { theme, setTheme } = useTheme();
-  const t = useTranslations("main");
+  const t = useTranslations();
   const router = useRouter();
 
   const toggleTheme = () => {

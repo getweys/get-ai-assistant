@@ -19,7 +19,7 @@ import { appRoutes } from "@/lib/routes";
 
 const page = () => {
   const router = useRouter();
-  const t = useTranslations("main");
+  const t = useTranslations();
 
   const {
     control,

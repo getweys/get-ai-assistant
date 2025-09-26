@@ -34,7 +34,7 @@ const insightColors = {
 };
 
 export function AIInsights({ insights }: AIInsightsProps) {
-  const t = useTranslations("main");
+  const t = useTranslations();
   return (
     <div className="mb-8">
       <h3 className="text-sm font-medium text-sidebar-foreground mb-4">
@@ -50,7 +50,7 @@ export function AIInsights({ insights }: AIInsightsProps) {
             <CardContent className="p-4 py-0">
               <div className="flex items-center justify-between mb-2">
                 <span className={`text-sm font-medium ${colors.text}`}>
-                  {insight.title}
+                  {t(insight.title)}
                 </span>
                 <span
                   className={`text-sm font-medium ${colors.value} px-2 py-1 rounded-full ${colors.valueBg}`}

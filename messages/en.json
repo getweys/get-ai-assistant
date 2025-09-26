@@ -1,5 +1,5 @@
-{
-  "main": {
+
+   {
     "getAiAssistant": " GET AI Assistant",
     "setNewPassword": "Set new password",
     "password": "Password",
@@ -26,6 +26,29 @@
     "aiInsights": "AI Insights",
     "selectLanguage": "Select Language",
     "english": "English",
-    "arabic": "Arabic"
+    "arabic": "Arabic",
+
+    "aiInsightsCards":
+    {
+    "predictive":{
+    "title": "Predictive Analytics",
+    "value": "+34%",
+    "description": "Revenue forecast accuracy improved",
+    "progress": 75
+  },
+  "neural":{
+    "title": "Neural Processing",
+    "value": "97.3%",
+    "description": "Pattern recognition accuracy",
+    "progress": 97
+  },
+  "quantum":{
+    "title": "Quantum Insights",
+    "value": "2,847",
+    "description": "Data correlations discovered",
+    "progress": 85
   }
 }
+}
+
+

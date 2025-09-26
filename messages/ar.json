@@ -1,5 +1,5 @@
 {
-  "main": {
+   
     "getAiAssistant": "احصل على مساعد الذكاء الاصطناعي",
     "setNewPassword": "تعيين كلمة مرور جديدة",
     "password": "كلمة المرور",
@@ -27,5 +27,5 @@
     "selectLanguage": "اختر اللغة",
     "english": "الإنجليزية",
     "arabic": "العربية"
-  }
+  
 }

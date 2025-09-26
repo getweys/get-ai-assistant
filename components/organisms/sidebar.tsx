@@ -33,7 +33,7 @@ export function Sidebar({
   onToggle,
   onMobileToggle,
 }: SidebarProps) {
-  const t = useTranslations("main");
+  const t = useTranslations();
 
   return (
     <>

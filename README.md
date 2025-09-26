@@ -20,11 +20,11 @@ A modern, well-structured GET AI Assistant dashboard built with Next.js 14, Reac
 │   ├── global-error.tsx       # Global error boundary
 │   ├── layout.tsx             # Root layout with metadata
 │   ├── loading.tsx            # Loading component
-│   └── page.tsx               # Main dashboard page
+│   └── page.tsx               # "" dashboard page
 ├── components/
 │   ├── chat/
 │   │   ├── capability-card.tsx    # AI capability display cards
-│   │   ├── chat-area.tsx          # Main chat container
+│   │   ├── chat-area.tsx          # "" chat container
 │   │   ├── chat-input.tsx         # Message input component
 │   │   ├── message-bubble.tsx     # Individual message component
 │   │   └── welcome-message.tsx    # Initial welcome message
@@ -33,7 +33,7 @@ A modern, well-structured GET AI Assistant dashboard built with Next.js 14, Reac
 │   ├── sidebar/
 │   │   ├── ai-insights.tsx       # AI insights cards
 │   │   ├── connected-systems.tsx # System status indicators
-│   │   ├── sidebar.tsx           # Main sidebar container
+│   │   ├── sidebar.tsx           # "" sidebar container
 │   │   ├── smart-prompts.tsx     # Suggested prompts
 │   │   └── usage-metrics.tsx     # Usage statistics
 │   └── ui/                       # Shadcn UI components
