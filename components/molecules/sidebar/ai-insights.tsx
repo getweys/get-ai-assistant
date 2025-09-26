@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/atoms/card";
 import type { AIInsight } from "@/types";
+import { useTranslations } from "next-intl";
 
 interface AIInsightsProps {
   insights: AIInsight[];
@@ -33,10 +34,11 @@ const insightColors = {
 };
 
 export function AIInsights({ insights }: AIInsightsProps) {
+  const t = useTranslations("main");
   return (
     <div className="mb-8">
       <h3 className="text-sm font-medium text-sidebar-foreground mb-4">
-        AI Insights
+        {t("aiInsights")}
       </h3>
       {insights.map((insight) => {
         const colors = insightColors[insight.color];

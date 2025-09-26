@@ -16,9 +16,12 @@ import {
   ForgetPasswordSchema,
   ForgetPasswordSchemaTypes,
 } from "@/schema/forget-password.schema";
+import { useTranslations } from "next-intl";
+import { appRoutes } from "@/lib/routes";
 
 const page = () => {
   const router = useRouter();
+  const t = useTranslations("main");
 
   const {
     control,
@@ -35,7 +38,7 @@ const page = () => {
 
   const onSubmit: SubmitHandler<ForgetPasswordSchemaTypes> = (data) => {
     console.log(data);
-    router.push("/");
+    router.push(appRoutes.root);
   };
 
   return (
@@ -49,7 +52,7 @@ const page = () => {
             <Brain className="h-4 w-4 text-white" />
           </div>
           <span className="font-semibold text-xl text-sidebar-foreground tracking-[2px] dark:text-white">
-            GET AI Assistant
+            {t("getAiAssistant")}
           </span>
         </div>
         <Text
@@ -58,13 +61,13 @@ const page = () => {
             "text-xl text-center font-semibold tracking-[0.6px] mb-[2px] mt-6 dark:text-white"
           )}
         >
-          Set new password
+          {t("setNewPassword")}
         </Text>
 
         <div className="flex flex-col gap-8 py-7">
           <div className="flex flex-col gap-1.5 ">
             <label className="text-xs font-[450] tracking-[0.5px] dark:text-white">
-              Password
+              {t("password")}
             </label>
             <ControlInput
               className="border rounded-sm px-4 py-2  placeholder:text-xs text-sm text-semigray"
@@ -77,7 +80,7 @@ const page = () => {
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-[450] tracking-[0.5px] dark:text-white">
-              Confirm Password
+              {t("confirmPassword")}
             </label>
             <ControlInput
               className="border rounded-sm px-4 py-2 placeholder:text-xs text-sm text-semigray"
@@ -90,7 +93,7 @@ const page = () => {
           </div>
         </div>
         <Button className="bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 text-white mt-2">
-          Send
+          {t("send")}
         </Button>
       </form>
     </div>

@@ -19,6 +19,7 @@ import { toast } from "@/lib/toast-utils";
 import { getCookie, removeCookie } from "@/lib/cookies";
 import { REFRESH_TOKEN, SESSION, USER_ID } from "@/constants";
 import { useRouter } from "next/navigation";
+import { appRoutes } from "@/lib/routes";
 
 const AIAssistantDashboard = () => {
   const { messages, isLoading, sendMessage } = useChat();
@@ -73,7 +74,7 @@ const AIAssistantDashboard = () => {
         removeCookie(SESSION);
         removeCookie(REFRESH_TOKEN);
         removeCookie(USER_ID);
-        router.push("/signin");
+        router.push(appRoutes.signin);
       } else {
         toast.error("Something went wrong!");
       }

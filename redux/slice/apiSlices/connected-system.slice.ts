@@ -14,26 +14,18 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-export const authSlice = createApi({
-  reducerPath: "authSlice",
+export const connectedSystemSlice = createApi({
+  reducerPath: "connectedSystemSlice",
   baseQuery: baseQuery,
 
   endpoints: (builder) => ({
-    login: builder.mutation({
-      query: (userData) => ({
-        url: "/auth/login",
-        method: "POST",
-        body: userData,
-      }),
-    }),
-    logout: builder.mutation({
-      query: (payload) => ({
-        url: "/auth/logout",
-        method: "POST",
-        body: payload,
+    connectedSystem: builder.query({
+      query: () => ({
+        url: "/connected-systems",
+        method: "GET",
       }),
     }),
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation } = authSlice;
+export const { useConnectedSystemQuery } = connectedSystemSlice;

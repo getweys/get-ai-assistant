@@ -16,9 +16,12 @@ import { useLoginMutation } from "@/redux/slice/apiSlices/auth.slice";
 import { setCookie } from "@/lib/cookies";
 import { REFRESH_TOKEN, SESSION, USER_ID } from "@/constants";
 import { toast } from "@/lib/toast-utils";
+import { useTranslations } from "next-intl";
+import { appRoutes } from "@/lib/routes";
 
 const page = () => {
   const router = useRouter();
+  const t = useTranslations("main");
 
   const [login, { isLoading }] = useLoginMutation({});
 
@@ -45,12 +48,12 @@ const page = () => {
       const res = await login(payload);
 
       if (res?.data) {
-        const userData = res?.data;
-        setCookie(SESSION, userData?.data?.accessToken);
-        setCookie(REFRESH_TOKEN, userData?.data?.refreshToken);
-        setCookie(USER_ID, userData?.data?.userId);
+        const userData = res.data;
+        setCookie(SESSION, userData.data.accessToken);
+        setCookie(REFRESH_TOKEN, userData.data.refreshToken);
+        setCookie(USER_ID, userData.data.userId);
         toast.success("Login successful!");
-        router.push("/ai-assistant-dashboard");
+        router.push(appRoutes.dashboard);
       } else {
         toast.error(res?.error?.data?.errors["Auth.InvalidCredentials"][0]);
       }
@@ -70,7 +73,7 @@ const page = () => {
             <Brain className="h-4 w-4 text-white" />
           </div>
           <span className="font-semibold text-xl text-sidebar-foreground tracking-[2px] dark:text-white">
-            GET AI Assistant
+            {t("getAiAssistant")}
           </span>
         </div>
         <Text
@@ -79,18 +82,18 @@ const page = () => {
             "text-xl text-center font-semibold tracking-[0.6px] mb-[2px] mt-6  dark:text-white"
           )}
         >
-          Welcome Back
+          {t("welcomeBack")}
         </Text>
         <Text
           containerTag={Tags.Paragraph}
           className="text-sm text-semigray text-center dark:text-text-dark tracking-[0.7px]"
         >
-          Sign in to access your AI assistant
+          {t("signinSemiHeader")}
         </Text>
         <div className="flex flex-col gap-6 py-8">
           <div className="flex flex-col gap-1.5 ">
             <label className="text-xs font-[450] tracking-[0.5px] dark:text-white">
-              Email
+              {t("email")}
             </label>
             <ControlInput
               className="border rounded-sm px-4 py-2  placeholder:text-xs text-sm text-semigray "
@@ -103,7 +106,7 @@ const page = () => {
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-[450] dark:text-white tracking-[0.5px]">
-              Password
+              {t("password")}
             </label>
             <ControlInput
               className="border rounded-sm px-4 py-2 placeholder:text-xs text-sm text-semigray "
@@ -120,25 +123,25 @@ const page = () => {
           type="submit"
           loader={isLoading}
         >
-          Sign in
+          {t("signIn")}
         </Button>
         <div className="flex justify-between mt-2.5">
           <Text
             containerTag={Tags.Paragraph}
             className="text-xs text-center  font-[450] dark:text-text-dark "
-            onClick={() => router.push("/signup")}
+            onClick={() => router.push(appRoutes.signup)}
           >
-            Create an account?{" "}
+            {t("createAnAccount")}?{" "}
             <span className="hover:text-blue-600 hover:underline cursor-pointer ">
-              Sign up
+              {t("signUp")}
             </span>
           </Text>
           <Text
             containerTag={Tags.Paragraph}
             className="text-xs text-center font-[450] hover:text-blue-600 hover:underline cursor-pointer dark:hover:text-blue-600 dark:text-text-dark"
-            onClick={() => router.push("/forget-password")}
+            onClick={() => router.push(appRoutes.forgetPassword)}
           >
-            Forgot password?
+            {t("forgotPassword")}?
           </Text>
         </div>
       </form>

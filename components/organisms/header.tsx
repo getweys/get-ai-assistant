@@ -18,8 +18,12 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import type { User } from "@/types";
-import { useRouter } from "next/navigation";
 import { useProfileQuery } from "@/redux/slice/apiSlices/user.slice";
+import { useTranslations } from "next-intl";
+import { setCookie } from "@/lib/cookies";
+import { LANGUAGE } from "@/constants";
+import { languages } from "@/lib/dummyData";
+import { useRouter } from "next/navigation";
 
 interface HeaderProps {
   user: User;
@@ -45,10 +49,17 @@ export function Header({
   loader,
 }: HeaderProps) {
   const { theme, setTheme } = useTheme();
+  const t = useTranslations("main");
+  const router = useRouter();
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
     onDarkMode?.();
+  };
+
+  const toggleLanguage = (val: string) => {
+    setCookie(LANGUAGE, val);
+    router.refresh();
   };
 
   const { data: userProfile, isLoading } = useProfileQuery({});
@@ -72,14 +83,50 @@ export function Header({
           </div>
           <div className="hidden lg:block">
             <h1 className="text-xl font-semibold text-foreground">
-              GET AI Assistant
+              {t("getAiAssistant")}
             </h1>
             <p className="text-sm text-blue-600 dark:text-blue-400">
-              Advanced Quantum Intelligence • Real-time Data Analysis
+              {t("advancedQuantumIntelligence")}
             </p>
           </div>
         </div>
+
         <div className="flex items-center gap-2">
+          {/* language Dropdown*/}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-2 p-2 rounded-md hover:bg-accent focus:bg-accent focus:outline-none outline">
+              {/* Desktop: Show name and role */}
+              {isLoading ? (
+                <div className="loader"></div>
+              ) : (
+                <div className="text-left hidden lg:block">
+                  <div className="text-sm font-medium text-foreground">
+                    {t("selectLanguage")}
+                  </div>
+                </div>
+              )}
+              <ChevronDown className="h-4 w-4 text-muted-foreground" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              {languages.map((lang) => {
+                return (
+                  <DropdownMenuItem
+                    onClick={() => toggleLanguage(lang.id)}
+                    className="cursor-pointer"
+                    key={lang.id}
+                  >
+                    <span className="flex items-center gap-2">
+                      <span>{lang.flag}</span>
+                      {lang.language === "English"
+                        ? `${t("english")}`
+                        : `${t("arabic")}`}
+                    </span>
+                  </DropdownMenuItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           {/* Search and Fullscreen icons grouped together */}
           <div className="flex items-center gap-1">
             <Button
@@ -148,7 +195,9 @@ export function Header({
                 ) : (
                   <Moon className="mr-2 h-4 w-4" />
                 )}
-                <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+                <span>
+                  {theme === "dark" ? `${t("lightMode")}` : `${t("darkMode")}`}
+                </span>
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => {
@@ -159,7 +208,7 @@ export function Header({
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 {loader ? <div className="loader"></div> : null}
-                <span>Logout</span>
+                <span>{t("logout")}</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

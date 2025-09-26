@@ -1,0 +1,31 @@
+{
+  "main": {
+    "getAiAssistant": " GET AI Assistant",
+    "setNewPassword": "Set new password",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "send": "Send",
+    "welcomeBack": "Welcome Back",
+    "signinSemiHeader": "Sign in to access your AI assistant",
+    "email": "Email",
+    "signIn": "Sign in",
+    "createAnAccount": "Create an account",
+    "signUp": "Sign up",
+    "forgotPassword": "Forgot Password",
+    "signupSemiHeader": "Get start your journey with AI assistant",
+    "fullName": "Full Name",
+    "alreadyHaveAccount": "Already have an account",
+    "advancedQuantumIntelligence": "Advanced Quantum Intelligence • Real-time Data Analysis",
+    "logout": "Logout",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode",
+    "neuroAIInitialized": "NeuroAI Initialized",
+    "welcomeAiText": "Welcome to the future of AI assistance! I'm your advanced NeuroAI companion, powered by quantum processing and real-time neural networks. I can analyze vast datasets, generate predictive insights, and create comprehensive visualizations in milliseconds",
+    "analyzemarket": "'Try: ''Analyze market trends with quantum predictions' or 'Generate neural network dashboard for customer behavior'",
+    "Auth.InvalidCredentials": "Auth.InvalidCredentials",
+    "aiInsights": "AI Insights",
+    "selectLanguage": "Select Language",
+    "english": "English",
+    "arabic": "Arabic"
+  }
+}

@@ -8,11 +8,11 @@ export type {
   ConnectedSystem,
   User,
 } from "./dashboard";
-export interface socialLinksTypes {
+export interface SocialLinksTypes {
   id: number;
   title: string;
   icon: ReactNode;
-  onClick: () => void;
+  onClick: VoidFunction;
 }
 
 export type Nullable<T> = T | null;

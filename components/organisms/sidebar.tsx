@@ -10,6 +10,7 @@ import type {
   UsageMetric,
   ConnectedSystem,
 } from "@/types";
+import { useTranslations } from "next-intl";
 
 interface SidebarProps {
   insights: AIInsight[];
@@ -32,6 +33,8 @@ export function Sidebar({
   onToggle,
   onMobileToggle,
 }: SidebarProps) {
+  const t = useTranslations("main");
+
   return (
     <>
       {/* Mobile Overlay */}
@@ -77,7 +80,7 @@ export function Sidebar({
                   <Brain className="h-4 w-4 text-white" />
                 </div>
                 <span className="font-semibold text-sidebar-foreground">
-                  GET AI Assistant
+                  {t("getAiAssistant")}
                 </span>
               </div>
 

@@ -1,7 +1,9 @@
+"use client";
 import { Button } from "@/components/atoms/button";
 import { Card, CardContent } from "@/components/atoms/card";
 import { Database, Brain, BarChart3, Plus } from "lucide-react";
 import type { ConnectedSystem } from "@/types";
+import { useConnectedSystemQuery } from "@/redux/slice/apiSlices/connected-system.slice";
 
 interface ConnectedSystemsProps {
   systems: ConnectedSystem[];
@@ -32,6 +34,11 @@ const systemIcons = {
 };
 
 export function ConnectedSystems({ systems }: ConnectedSystemsProps) {
+  const { data: connectedSystems, isLoading } = useConnectedSystemQuery({});
+  const handleConnectSystems = () => {
+    console.log(connectedSystems, "connectedSystems");
+  };
+
   return (
     <div>
       <h3 className="text-sm font-medium text-sidebar-foreground mb-4">
@@ -76,7 +83,7 @@ export function ConnectedSystems({ systems }: ConnectedSystemsProps) {
         })}
       </div>
       <Card className="bg-sidebar border-sidebar-border border-dashed shadow-sm mt-4 py-0">
-        <CardContent className="p-4">
+        <CardContent className="p-4" onClick={handleConnectSystems}>
           <Button
             variant="ghost"
             className="w-full h-auto p-0 text-sidebar-foreground hover:bg-sidebar-accent"

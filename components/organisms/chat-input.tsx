@@ -2,7 +2,7 @@ import { Input } from "@/components/atoms/input";
 import { Button } from "@/components/atoms/button";
 import { Mic, Smile, Shield, Send } from "lucide-react";
 import EmojiPicker from "emoji-picker-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, KeyboardEvent } from "react";
 
 interface ChatInputProps {
   value: string;
@@ -23,7 +23,7 @@ export function ChatInput({
   const emojiButtonRef = useRef<HTMLButtonElement>(null);
   const emojiPickerRef = useRef<HTMLDivElement>(null);
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = (e: KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       onSend();

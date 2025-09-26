@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
 
 interface ButtonProps {
   title: string;
   extraClasses?: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   iconStyles?: string;
   type?: "button" | "reset" | "submit";
   onClick?: () => void;

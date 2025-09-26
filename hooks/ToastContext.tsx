@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useCallback, useContext, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useState,
+} from "react";
 
 import CustomToast from "@/components/atoms/custom-toast";
 import { ToastEnumType } from "@/types/enums/toast-enum";
@@ -49,7 +55,7 @@ interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
-export function ToastProvider({ children }: { children: React.ReactNode }) {
+export function ToastProvider({ children }: { children: ReactNode }) {
   const [toastState, setToastState] = useState<ToastState>({
     isVisible: false,
     type: ToastEnumType.SUCCESS,
